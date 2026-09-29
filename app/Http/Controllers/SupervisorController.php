@@ -11,7 +11,10 @@ class SupervisorController extends Controller
      */
     public function index()
     {
-        //
+        $title = "index Supervisor";
+        return view('supervisors.index',[
+            'title'=> $title
+        ]);
     }
 
     /**
@@ -19,7 +22,10 @@ class SupervisorController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Create Supervisor";
+        return view('supervisors.create',[
+            'title'=> $title
+        ]);
     }
 
     /**
@@ -35,7 +41,10 @@ class SupervisorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "Show Supervisor";
+        return view('supervisors.show',[
+            'title'=> $title
+        ]);
     }
 
     /**
@@ -43,7 +52,10 @@ class SupervisorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "Edit Supervisor";
+        return view('supervisors.edit',[
+            'title'=> $title
+        ]);
     }
 
     /**

@@ -11,7 +11,10 @@ class AreaController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Index Areas";
+        return view('areas.index', [
+           'title' => $title 
+        ]);
     }
 
     /**
@@ -19,7 +22,10 @@ class AreaController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Create Areas";
+        return view('areas.create', [
+           'title' => $title 
+        ]);
     }
 
     /**
@@ -35,7 +41,10 @@ class AreaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $title = "Show Areas";
+        return view('areas.show', [
+           'title' => $title 
+        ]);
     }
 
     /**
@@ -43,7 +52,10 @@ class AreaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "Edit Areas";
+        return view('areas.edit', [
+           'title' => $title 
+        ]);
     }
 
     /**
