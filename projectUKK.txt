@@ -1,0 +1,58 @@
+ASTRA REPORT (LMS ASTRA)
+1.	Teknologi
+-	Laravel 13 + Blade + Tailwind CSS
+2.	Pengguna
+-	Dealer, bertugas untuk mengerjakan tugas dan mengumpulkan tugas yang diberikan oleh Supervisor dalam bentuk Link google drive.
+-	Supervisor, bertugas untuk mengirimkan tugas yang perlu dikerjakan oleh dealer dan memeriksa hasil pekerjaan dealer.
+3.	Halaman Yang Perlu Dibuat
+-	Halaman manajemen Dealer (Supervisor)
+Halaman yang digunakan oleh supervisor untuk mengolah data dealer mulai dari menambah, mengedit, menampilkan dan menghapus. Field yang digunakan adalah sebagai berikut.
+a.	Kode Dealer (code)
+b.	Nama Dealer (name).
+-	Halaman manajemen Department (Supervisor)
+Halaman yang digunakan oleh supervisor untuk mengolah data Department mulai dari menambah, mengedit, menampilkan dan menghapus. Field yang digunakan adalah sebagai berikut.
+a.	Kode Departemen (code)
+b.	Nama Departemen (name)
+-	Halaman manajemen Area (Supervisor)
+Halaman yang digunakan oleh supervisor untuk mengolah data Area mulai dari menambah, mengedit, menampilkan dan menghapus. Field yang digunakan adalah sebagai berikut.
+a.	Kode Departemen (code)
+b.	Nama Departemen (name)
+-	Halaman Manajemen Tugas (Supervisor)
+Halaman yang digunakan untuk mengelolah data tugas oleh supervisor yang akan dikirimkan kepada dealer, mulai dari menambah, mengedit, menampilkan dan menghapus. Ketika sudah ada dealer yang mengumpulkan maka tugas yang sudah ada tidak dapat di edit dan tidak dapat dihapus. Field yan g digunakan adalah sebagai berikut.
+a.	Nama Laporan (title)  Input Text
+b.	Departemen (department_id)  Select Option
+c.	Area (area_id)  Select Option
+d.	Batas Waktu (due_at)  Input date (default hari ini)
+e.	Perlu juga untuk menyimpan informasi tugas dibuat oleh siapa?? 
+-	Halaman Pengumpulan Tugas (Dealer)
+Halaman yang digunakan oleh dealer untuk mengumpulkan tugas yang dikirimkan oleh supervisor.  Dealer bisa mengumpulkan berulang kali tugas untuk diperiksa oleh Supervisor selama status pengumpulan masih “REVISI”, jika status pengumpulan “DISETUJUI” atau “DITOLAK”, maka dealer tidak bisa mengumpulkan tugas lagi. Serta jika sudah lewat dari tanggal deadline maka dealer juga tidak bisa mengumpulkan tugas lagi.
+
+Pada saat dealer mengakses halaman ini, pastikan muncul informasi berikut.
+a.	Nama Laporan
+b.	Departemen
+c.	Area
+d.	Deadline
+
+Untuk mengumpulkan tugas, dealer cukup mengisi field berikut.
+a.	Link Google Drive  Input Text
+b.	Catatan (Opsional)   Text Area
+
+Setiap aktivitas pengumpulan oleh dealer dan pemeriksaan oleh supervisor akan menghasilkan data log yang bisa di lihat dalam bentuk table, informasi yang muncul berupa tanggal, aktivitas (Kumpul, Pengumpulan Ulang), catatan.
+ 
+
+-	Halaman Pemeriksaan Tugas (Supervisor)
+Halaman yang digunakan oleh supervisor untuk memeriksa hasil tugas yang dikumpulkan oleh dealer. 
+Pada saat supervisor mengakses halaman ini, pastikan muncul informasi berikut ini.
+a.	Nama Laporan
+b.	Nama Dealer
+c.	Tanggal Kumpul
+d.	Link Google Drive yang dikumpulkan oleh Dealer
+
+Untuk memeriksa tugas, Supervisor cukup mengembalikan hasil pekerjaan dealer dan bisa berkali-kali dengan cukup mengubah status pengumpulan dari dealer dengan 3 pilihan berikut yaitu.
+a.	DISETUJUI
+b.	REVISI
+c.	DITOLAK
+Serta supervisor juga bisa mengisikan catatan dalam input text area.
+Setiap aktivitas pengumpulan oleh dealer dan pemeriksaan oleh supervisor akan menghasilkan data log yang bisa di lihat dalam bentuk table, informasi yang muncul berupa tanggal, aktivitas (Supervisor Minta Revisi, Supervisor Menyetujui Pengumpulan, Supervisor Menolak Hasil Pekerjaan), catatan.
+ 
+

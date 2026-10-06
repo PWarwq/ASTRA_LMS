@@ -12,3 +12,18 @@ Route::get('/', function () {
 Route::resource('dealers', DealerController::class);
 Route::resource('areas', AreaController::class);
 Route::resource('supervisors', SupervisorController::class);
+
+// CARA PAKAI middleware 'supervisor' / 'dealer':
+// Alias-nya didaftarkan di: bootstrap/app.php
+// Logikanya di: app/Http/Middleware/EnsureSupervisor.php & EnsureDealer.php
+//
+// Contoh (JANGAN di-uncomment dulu — butuh kolom 'role' di tabel users + login):
+//
+// Route::middleware(['auth', 'supervisor'])->group(function () {
+//     Route::resource('dealers', DealerController::class); // kelola dealer = kerjaan supervisor
+//     Route::resource('areas', AreaController::class);
+// });
+//
+// Route::middleware(['auth', 'dealer'])->group(function () {
+//     // Route::get('tasks', ...); // lihat + kumpulin tugas = kerjaan dealer
+// });

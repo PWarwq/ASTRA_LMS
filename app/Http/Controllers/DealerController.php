@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dealer;
 use Illuminate\Http\Request;
 
 class DealerController extends Controller
@@ -11,10 +12,10 @@ class DealerController extends Controller
      */
     public function index()
     {
-        $title = "Index Dealers";
-        return view('dealers.index',[
-            'title' => $title
-        ]);
+        
+        $dealers = Dealer::all();
+        return view('dealers.index', ['title'=> 'Index Dealer', 'dealers'=> $dealers]);
+    
     }
 
     /**
@@ -22,9 +23,10 @@ class DealerController extends Controller
      */
     public function create()
     {
-        $title = "Create Dealers";
-        return view('dealers.create',[
-            'title' => $title
+        $title = 'Create Dealers';
+
+        return view('dealers.create', [
+            'title' => $title,
         ]);
     }
 
@@ -33,7 +35,14 @@ class DealerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'code' => 'required | string | max:255',
+            'name' => 'required | string | max:255'
+        ]);
+
+        Dealer::create($data);
+
+        return redirect()->route('dealers.index');
     }
 
     /**
@@ -41,9 +50,12 @@ class DealerController extends Controller
      */
     public function show(string $id)
     {
-        $title = "Show Dealers";
-        return view('dealers.show',[
-            'title' => $title
+        $title = 'Show Dealers';
+        $dealer = Dealer::findOrFail($id);
+
+        return view('dealers.show', [
+            'title' => $title,
+            'dealer' => $dealer
         ]);
     }
 
@@ -52,9 +64,12 @@ class DealerController extends Controller
      */
     public function edit(string $id)
     {
-        $title = "Edit Dealers";
-        return view('dealers.edit',[
-            'title' => $title
+        $title = 'Edit Dealers';
+        $dealer = Dealer::findOrFail($id);
+
+        return view('dealers.edit', [
+            'title' => $title,
+            'dealer'=> $dealer
         ]);
     }
 
@@ -63,7 +78,15 @@ class DealerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'code'=> 'required|string|max:255',
+            'name'=> 'required|string|max:255'
+        ]);
+
+        $dealer = Dealer::findOrFail($id);
+        $dealer->update($data);
+
+        return redirect()->route('dealers.index');
     }
 
     /**
@@ -71,6 +94,9 @@ class DealerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $dealer = Dealer::findOrFail($id);
+        $dealer->delete();
+        
+        return redirect()->route('dealers.index');
     }
 }
