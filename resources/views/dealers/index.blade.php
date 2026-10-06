@@ -9,21 +9,16 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col">
 
-    <nav class="shadow-lg px-5 py-5 flex justify-between items-center">
-        <p class="font-bold text-red-500">LMS ASTRA</p>
+<x-navbar :links="[
+    ['text'=>'Dashboard','url'=>route('dealers.index')],
+    ['text'=>'Add Dealer','url'=>route('dealers.create')],
+    ['text'=>'Task','url'=>route('tasks.create')],
+]"/>
 
-        <div class="flex items-center gap-6">
-            <a href="" class="bg-red-500 px-4 py-2 text-white rounded-lg font-semibold hover:bg-red-600">Dashboard</a>
-            <a href="{{ route('dealers.create') }}"
-                class="bg-red-500 px-4 py-2 text-white rounded-lg font-semibold hover:bg-red-600">Add Dealer</a>
-            <a href="" class="bg-red-500 px-4 py-2 text-white rounded-lg font-semibold hover:bg-red-600">Task</a>
-        </div>
-    </nav>
-
-    <div class="flex justify-center mt-10">
-        <table class="w-[900px] shadow-lg border-collapse bg-white rounded-lg">
+    <div class="flex-1 justify-center m-30">
+        <table class="w-[1200px] shadow-lg border-collapse bg-white rounded-lg ">
             <thead class="bg-red-100">
                 <tr>
                     <th class="px-6 py-3 text-center">Code</th>
@@ -64,6 +59,8 @@
             </tbody>
         </table>
     </div>
-</body>
 
+    <x-footer />
+
+</body>
 </html>
